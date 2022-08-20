@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import LoadingView from '../components/react-mobile-hackathon/devices/LoadingView';
 import Button from '../components/button/Button';
 import ScrollView from '../components/react-mobile-hackathon/devices/ScrollView';
@@ -27,6 +28,7 @@ class ScenicPage extends Component {
     state = {
         ready: false,
         isReview: false,
+        isStart: false,
     };
 
     componentDidMount() {
@@ -42,6 +44,16 @@ class ScenicPage extends Component {
     };
 
     renderContent = () => {
+      if (this.state.isStart) {
+        return (
+          <Link to="/scenic_done" style={{cursor: 'auto', textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', flex: 1, width: '100%'}}>
+            <img src="turn_left.svg" style={{width: 28, height: 28,}} />
+            <span style={{color: 'var(--dark)', font: 'var(--title)', marginLeft: 16}}>
+              Turn left in 200m
+            </span>
+          </Link>
+        );
+      }
       if (!this.state.isReview) {
         return (
           <div style={{display: 'flex', flexDirection: 'column', flex: 1, width: '100%'}}>
@@ -56,14 +68,18 @@ class ScenicPage extends Component {
 
             <div style={{width: '100%', flex: 1,}} />
 
-            <div style={{width: '100%', display: 'flex', marginBottom: 19,}}>
+            <div style={{width: '100%', display: 'flex', marginTop: 21, marginBottom: 19,}}>
               <Button
                   variant="secondary"
                   onClick={() => {
                     this.setState({isReview: true})
                   }}
                   label="Reviews" style={{marginRight: 8}} />
-              <Button to="/scenic_start" label="Start ride!" style={{marginLeft: 8}} />
+              <Button 
+                  onClick={() => {
+                    this.setState({isStart: true})
+                  }}
+                  label="Start ride!" style={{marginLeft: 8}} />
             </div>
           </div>
         );
@@ -89,54 +105,87 @@ class ScenicPage extends Component {
               }}>
             Submit
           </div>
-          <Button
-              to="/scenic_riding"
+          <Button 
+              onClick={() => {
+                this.setState({isStart: true})
+              }}
               label="Start ride!"
               style={{marginTop: 21, marginBottom: 16, alignSelf: 'center',}} />
         </div>
       );
     }
 
+    renderPopupContent = () => {
+      if (this.state.isStart) {
+        return (
+          <div style={{
+            display: 'flex', 
+            flexDirection: 'column',
+            alignItems: 'center', width: '100%',}}>
+            <div style={{background: 'var(--cream)', width: 55, minHeight: 4, height: 4, borderRadius: 10, marginTop: 14, marginBottom: 16,}} />
+            {this.renderContent()}
+          </div>
+        );
+      }
+      return (
+        <div style={{
+          display: 'flex', 
+          flexDirection: 'column',
+          alignItems: 'center', width: '100%',}}>
+          <div style={{background: 'var(--cream)', width: 55, minHeight: 4, height: 4, borderRadius: 10, marginTop: 14}} />
+          <div style={{padding: '24px 16px 0', display: 'flex', flexDirection: 'column'}}>
+            <span style={{color: 'var(--lime)', font: 'var(--copy14)', textAlign: 'left'}}>
+              45 minutes  •  2.4km
+            </span>
+            <span style={{marginTop: 4, color: 'var(--dark)', font: 'var(--title)'}}>A scenic journey to <br/>Opera House</span>
+            <span style={{marginTop: 4, color: 'var(--dark)', font: 'var(--copy16)'}}>
+              Cycle through a traffic-free route and enjoy great views and a cuppa at the end!
+            </span>
+
+            <span style={{marginTop: 12, color: 'var(--slate)', font: 'var(--copy14)'}}>
+              address line 1 2 3
+            </span>
+
+          </div>
+
+          <div style={{marginTop: 16, width: '100%', height: 1, backgroundColor: 'var(--olive)'}} />
+
+          {this.renderContent()}
+        </div>
+      );
+    }
+
+    renderPopup = () => {
+      let height = 333;
+      if (this.state.isReview) height = 575;
+      if (this.state.isStart) height = 100;
+      return (
+        <div style={{
+          borderRadius: '10px 10px 40px 40px',
+          boxShadow: '0px 0px 4px rgba(151, 151, 151, 0.4)',
+          background: '#fff',
+          height,
+          transition: 'height 0.2s ease-in-out',
+          paddingTop: 8, position: 'absolute', bottom: 0, width: '100%',}}>
+          <ScrollView
+              style={{
+                width: '100%',
+                display: 'flex', 
+                padding: '0 24px',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}>
+            {this.renderPopupContent()}
+          </ScrollView>
+        </div>
+      );
+    };
+
     renderBody = () => {
         return (
           <div style={{flex: 1, maxHeight: '100%', display: 'flex', flexDirection: 'column' }}>
-            <img src="/route1.png" style={{width: '250%',marginLeft: -260}} />
-            <ScrollView
-                style={{
-                  background: '#fff',
-                  boxShadow: '0px 0px 4px rgba(151, 151, 151, 0.4)',
-                  borderRadius: '10px 10px 40px 40px',
-                  position: 'absolute',
-                  bottom: 0,
-                  width: '100%',
-                  height: this.state.isReview ? 575 : 333,
-                  transition: 'height 0.2s ease-in-out',
-                  display: 'flex', 
-                  padding: '0 24px',
-                  paddingTop: 14,
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                }}>
-              <div style={{background: 'var(--cream)', width: 55, minHeight: 4, height: 4, borderRadius: 10, marginTop: 14}} />
-              <div style={{padding: '24px 16px 0', display: 'flex', flexDirection: 'column'}}>
-                <span style={{color: 'var(--lime)', font: 'var(--copy14)', textAlign: 'left'}}>
-                  45 minutes  •  2.4km
-                </span>
-                <span style={{marginTop: 4, color: 'var(--dark)', font: 'var(--title)'}}>A scenic journey to <br/>Opera House</span>
-                <span style={{marginTop: 4, color: 'var(--dark)', font: 'var(--copy16)'}}>
-                  Cycle through a traffic-free route and enjoy great views and a cuppa at the end!
-                </span>
-
-                <span style={{marginTop: 12, color: 'var(--slate)', font: 'var(--copy14)'}}>
-                  address line 1 2 3
-                </span>
-
-              </div>
-
-              <div style={{marginTop: 16, width: '100%', height: 1, backgroundColor: 'var(--olive)'}} />
-
-              {this.renderContent()}
-            </ScrollView>
+            <img src="/route1.png" style={{width: '350%',marginLeft: -350, marginTop: -80}} />
+            {this.renderPopup()}
           </div>
         );
     };
