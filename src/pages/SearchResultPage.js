@@ -156,6 +156,7 @@ class SearchResultPage extends Component {
         <div
           style={{
             padding: "24px 16px 0",
+            width: '100%',
             display: "flex",
             flexDirection: "column",
           }}

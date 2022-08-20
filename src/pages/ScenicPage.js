@@ -143,7 +143,7 @@ class ScenicPage extends Component {
             </span>
 
             <span style={{marginTop: 12, color: 'var(--slate)', font: 'var(--copy14)'}}>
-              address line 1 2 3
+              via Harbour Bridge and Argyle Street
             </span>
 
           </div>
