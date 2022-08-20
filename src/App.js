@@ -7,6 +7,7 @@ import SearchPage from "./pages/SearchPage";
 import MobileHackathon from "./components/react-mobile-hackathon";
 import { Route, Switch } from "react-router-dom";
 import CompletedRidePage from "./pages/CompletedRide";
+import GroupCyclePage from './pages/GroupCyclePage';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route path="/new" component={NewPage} />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/scenic" component={ScenicPage} />
+          <Route path="/group-cycle" component={GroupCyclePage} />
           <Route path="/search" component={SearchPage} />
           <Route path="/completed-ride" component={CompletedRidePage} />
           <Route exact path="/" component={HomePage} />
