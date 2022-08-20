@@ -5,7 +5,7 @@ import MobileHackathon from './components/react-mobile-hackathon';
 class App extends Component {
     render() {
         return (
-            <MobileHackathon>
+            <MobileHackathon appName="Cycl" displayUrl="cycl.com">
                 <HomePage />
             </MobileHackathon>
         );

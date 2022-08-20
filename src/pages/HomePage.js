@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import DeviceBar from '../components/react-mobile-hackathon/devices/DeviceBar';
 import ScrollView from '../components/react-mobile-hackathon/devices/ScrollView';
+import { Link } from 'react-router-dom';
 import LoadingView from '../components/react-mobile-hackathon/devices/LoadingView';
-import { GridLoader } from 'react-spinners';
+import { BounceLoader } from 'react-spinners';
 import Background from '../images/background.jpg';
 
 class HomePage extends Component {
@@ -18,7 +19,7 @@ class HomePage extends Component {
     renderLoading = () => {
         return (
             <LoadingView>
-                <GridLoader color='#ffb432' loading={!this.state.ready} />
+                <BounceLoader color='var(--lime)' loading={!this.state.ready} />
             </LoadingView>
         );
     };
@@ -26,11 +27,14 @@ class HomePage extends Component {
     renderBody = () => {
         return (
             <ScrollView isDark>
-                <div style={{ height: '200%', display: 'flex', flexDirection: 'column' }}>
-                    <h1 style={{ color: 'rgb(250, 250, 255)' }}>React App</h1>
-                    <div style={{ flex: 1 }} />
-                    <h2 style={{ color: 'rgb(250, 250, 255)' }}>You've reached the end!</h2>
-                </div>
+              <Link 
+                  to="/new"
+                  style={{ textDecoration: 'none', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                <img src="logo.svg" style={{width: 248, height: 124}} />
+                <span style={{marginTop: 100, textAlign: 'center', font: 'var(--feature)', color: 'var(--cream)'}}>
+                  Cycl around NSW with ease.
+                </span>
+              </Link>
             </ScrollView>
         );
     };
@@ -38,29 +42,7 @@ class HomePage extends Component {
     render() {
         return (
             <div style={styles.container}>
-                <DeviceBar
-                    title='z App'
-                    position='top'
-                    noBorder
-                    isAppBar
-                    titleStyle={{
-                        color: 'rgb(250, 250, 255)'
-                    }}
-                    style={{
-                        borderColor: 'rgba(255, 255, 255, .2)'
-                    }}
-                />
-                {this.state.ready ? this.renderBody() : this.renderLoading()}
-                <DeviceBar
-                    title='Bottom Bar'
-                    position='bottom'
-                    titleStyle={{
-                        color: 'rgb(250, 250, 255)'
-                    }}
-                    style={{
-                        borderColor: 'rgba(255, 255, 255, .2)'
-                    }}
-                />
+              {this.state.ready ? this.renderBody() : this.renderLoading()}
             </div>
         );
     }
@@ -72,10 +54,8 @@ const styles = {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        backgroundImage: `url(${Background})`,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed'
+        paddingTop: '30px',
+        backgroundColor: 'var(--olive)',
     }
 };
 
