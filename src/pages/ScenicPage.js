@@ -193,7 +193,9 @@ class ScenicPage extends Component {
     render() {
         return (
             <div style={styles.container}>
-              <img src="back.svg" style={{position: 'absolute', top: 42, left: 16, cursor: 'pointer'}} />
+              <Link to="/profile">
+                <img src="back.svg" style={{position: 'absolute', top: 42, left: 16, cursor: 'pointer'}} />
+              </Link>
               {this.renderBody()}
               {this.state.ready ? null : this.renderLoading()}
             </div>
