@@ -16,6 +16,7 @@
 
 .button--secondary {
     background-color: var(--olive);
+    color: var(--cream);
 }
 
 .button--small {
