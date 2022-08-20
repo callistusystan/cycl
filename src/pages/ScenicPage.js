@@ -1,12 +1,32 @@
 import React, { Component } from 'react';
 import LoadingView from '../components/react-mobile-hackathon/devices/LoadingView';
 import Button from '../components/button/Button';
+import ScrollView from '../components/react-mobile-hackathon/devices/ScrollView';
 import { BounceLoader } from 'react-spinners';
 
-class ProfilePage extends Component {
+const Review = ({img, name, skill, comment}) => {
+  let avatar = (<div style={{minWidth: 45, minHeight: 45, width: 45, height: 45, borderRadius: 100, background: 'var(--skies)'}} />);
+  if (img) {
+    avatar = (<img src={img} style={{borderRadius: 100, minWidth: 45, minHeight: 45, width: 45, height: 45}} />);
+  }
+  return (
+    <div style={{display: 'flex', marginTop: 24,}}>
+      {avatar}
+      <div style={{marginLeft: 16, display: 'flex', flexDirection: 'column'}}>
+        <span style={{color: 'var(--dark)', font: 'var(--title)'}}>{name}</span>
+        <span style={{marginTop: 4, color: 'var(--slate)', font: 'var(--copy12)'}}>{skill}</span>
+        <span style={{marginTop: 8, color: 'var(--dark)', font: 'var(--copy14)'}}>{comment}</span>
+      </div>
+
+    </div>
+  );
+};
+
+class ScenicPage extends Component {
 
     state = {
-        ready: false
+        ready: false,
+        isReview: false,
     };
 
     componentDidMount() {
@@ -21,11 +41,67 @@ class ProfilePage extends Component {
         );
     };
 
+    renderContent = () => {
+      if (!this.state.isReview) {
+        return (
+          <div style={{display: 'flex', flexDirection: 'column', flex: 1, width: '100%'}}>
+            <div style={{width: '100%', marginTop: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 16px'}}>
+              <span style={{color: 'var(--dark)', font: 'var(--copy14)'}}>
+                Estimated arrival time:
+              </span>
+              <span style={{color: 'var(--dark)', font: 'var(--title)'}}>
+                4:52pm
+              </span>
+            </div>
+
+            <div style={{width: '100%', flex: 1,}} />
+
+            <div style={{width: '100%', display: 'flex', marginBottom: 19,}}>
+              <Button
+                  variant="secondary"
+                  onClick={() => {
+                    this.setState({isReview: true})
+                  }}
+                  label="Reviews" style={{marginRight: 8}} />
+              <Button to="/scenic_start" label="Start ride!" style={{marginLeft: 8}} />
+            </div>
+          </div>
+        );
+      }
+      return (
+        <div style={{display: 'flex', flexDirection: 'column', flex: 1, width: '100%', padding: '0 16px'}}>
+          <span style={{marginTop: 24, color: 'var(--dark)', font: 'var(--title)'}}>
+            Read Cycl reviews
+          </span>
+          <Review img="" name="Andrea Lewis" skill="Rookie" comment="Fantastic route for beginners. Great recommendation from Cycl." />
+          <Review img="" name="Jamie Johnson" skill="Veteran" comment="Brought my teenage nephew on this route as his first official ride and he loved it, especially because some treats were part of the ride!" />
+          
+          <div style={{marginTop: 32, padding: '8px 12px', border: '1px solid var(--cream)', borderRadius: 2, cursor: 'text'}}>
+            <span style={{color: 'var(--slate)', font: 'var(--copy14)'}}>
+              You can only submit a review after you’ve cycled the route at least once.
+            </span>
+          </div>
+
+          <div
+              style={{
+                marginTop: 24, background: '#E3E3E3', borderRadius: 60, width: 120, height: 30, alignSelf: 'flex-end',
+                display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#8C8C8C', font: 'var(--copy12)',
+              }}>
+            Submit
+          </div>
+          <Button
+              to="/scenic_riding"
+              label="Start ride!"
+              style={{marginTop: 21, marginBottom: 16, alignSelf: 'center',}} />
+        </div>
+      );
+    }
+
     renderBody = () => {
         return (
           <div style={{flex: 1, maxHeight: '100%', display: 'flex', flexDirection: 'column' }}>
             <img src="/route1.png" style={{width: '250%',marginLeft: -260}} />
-            <div
+            <ScrollView
                 style={{
                   background: '#fff',
                   boxShadow: '0px 0px 4px rgba(151, 151, 151, 0.4)',
@@ -33,18 +109,20 @@ class ProfilePage extends Component {
                   position: 'absolute',
                   bottom: 0,
                   width: '100%',
-                  height: 333,
+                  height: this.state.isReview ? 575 : 333,
+                  transition: 'height 0.2s ease-in-out',
                   display: 'flex', 
                   padding: '0 24px',
+                  paddingTop: 14,
                   flexDirection: 'column',
                   alignItems: 'center',
                 }}>
-              <div style={{background: 'var(--cream)', width: 55, height: 4, borderRadius: 10, marginTop: 14}} />
+              <div style={{background: 'var(--cream)', width: 55, minHeight: 4, height: 4, borderRadius: 10, marginTop: 14}} />
               <div style={{padding: '24px 16px 0', display: 'flex', flexDirection: 'column'}}>
                 <span style={{color: 'var(--lime)', font: 'var(--copy14)', textAlign: 'left'}}>
                   45 minutes  •  2.4km
                 </span>
-                <span style={{marginTop: 4, color: 'var(--dark)', font: 'var(--title)'}}>A scenic journey to Opera House</span>
+                <span style={{marginTop: 4, color: 'var(--dark)', font: 'var(--title)'}}>A scenic journey to <br/>Opera House</span>
                 <span style={{marginTop: 4, color: 'var(--dark)', font: 'var(--copy16)'}}>
                   Cycle through a traffic-free route and enjoy great views and a cuppa at the end!
                 </span>
@@ -56,24 +134,9 @@ class ProfilePage extends Component {
               </div>
 
               <div style={{marginTop: 16, width: '100%', height: 1, backgroundColor: 'var(--olive)'}} />
-              
-              <div style={{width: '100%', marginTop: 16, display: 'flex', justifyContent: 'space-around', alignItems: 'center',}}>
-                <span style={{color: 'var(--dark)', font: 'var(--copy14)'}}>
-                  Estimated arrival time:
-                </span>
-                <span style={{color: 'var(--dark)', font: 'var(--title)'}}>
-                  4:52pm
-                </span>
-              </div>
 
-              <div style={{width: '100%', flex: 1,}} />
-
-              <div style={{width: '100%', display: 'flex', marginBottom: 19,}}>
-                <Button variant="secondary" to="/scenic_reviews" label="Reviews" style={{marginRight: 8}} />
-                <Button to="/scenic_start" label="Start ride!" style={{marginLeft: 8}} />
-              </div>
-              
-            </div>
+              {this.renderContent()}
+            </ScrollView>
           </div>
         );
     };
@@ -81,6 +144,7 @@ class ProfilePage extends Component {
     render() {
         return (
             <div style={styles.container}>
+              <img src="back.svg" style={{position: 'absolute', top: 42, left: 16, cursor: 'pointer'}} />
               {this.renderBody()}
               {this.state.ready ? null : this.renderLoading()}
             </div>
@@ -98,4 +162,4 @@ const styles = {
     }
 };
 
-export default ProfilePage;
+export default ScenicPage;
