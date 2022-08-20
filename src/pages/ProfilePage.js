@@ -39,7 +39,7 @@ class ProfilePage extends Component {
     renderPlanARoute = () => {
       return (
         <div style={{width: '100%', marginTop: 24, boxShadow: '0px 0px 4px rgba(151, 151, 151, 0.4)', borderRadius: 10, padding: '8px 18px', display: 'flex', alignItems: 'center'}}>
-          <img src="add_location.svg" style={{marginLeft: 18, height: 22}}/>
+          <img src="add_location.svg" style={{height: 22}}/>
           <span style={{marginLeft: 16, color: 'var(--slate)', font: 'var(--copy16)'}}>Plan a route...</span>
         </div>
       );
