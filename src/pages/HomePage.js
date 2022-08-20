@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
-import DeviceBar from '../components/react-mobile-hackathon/devices/DeviceBar';
 import ScrollView from '../components/react-mobile-hackathon/devices/ScrollView';
 import { Link } from 'react-router-dom';
 import LoadingView from '../components/react-mobile-hackathon/devices/LoadingView';
 import { BounceLoader } from 'react-spinners';
-import Background from '../images/background.jpg';
 
 class HomePage extends Component {
-
-    state = {
-        ready: false
-    };
-
-    componentDidMount() {
-        setTimeout(() => this.setState({ ready: true }), 2000);
-    }
 
     renderLoading = () => {
         return (
@@ -42,7 +32,7 @@ class HomePage extends Component {
     render() {
         return (
             <div style={styles.container}>
-              {this.state.ready ? this.renderBody() : this.renderLoading()}
+              {this.renderBody()}
             </div>
         );
     }
