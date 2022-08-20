@@ -78,7 +78,7 @@ class CompletedRidePage extends Component {
           style={{
             background: "#fff",
             boxShadow: "0px 0px 4px rgba(151, 151, 151, 0.4)",
-            borderRadius: "0 0 40px 40px",
+            borderRadius: '10px 10px 40px 40px',
             position: "absolute",
             bottom: 0,
             width: "100%",

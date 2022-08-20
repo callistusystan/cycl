@@ -46,7 +46,7 @@ class ScenicPage extends Component {
     renderContent = () => {
       if (this.state.isStart) {
         return (
-          <Link to="/scenic_done" style={{cursor: 'auto', textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', flex: 1, width: '100%'}}>
+          <Link to="/completed-ride" style={{cursor: 'auto', textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', flex: 1, width: '100%'}}>
             <img src="turn_left.svg" style={{width: 28, height: 28,}} />
             <span style={{color: 'var(--dark)', font: 'var(--title)', marginLeft: 16}}>
               Turn left in 200m
