@@ -1,16 +1,18 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import "./Button.css";
 
-const Button = ({ label, variant, small, onClick, style }) => {
+const Button = ({ label, to, variant, small, onClick, style }) => {
   return (
-    <button
+    <Link
+      to={to}
       type="button"
       onClick={onClick}
       className={`button button--${variant} ${small ? "button--small" : ""}`}
-      style={{cursor: 'pointer', ...style}}
+      style={{cursor: 'pointer', textDecoration: 'none', ...style}}
     >
       {label}
-    </button>
+    </Link>
   );
 };
 

@@ -5,7 +5,7 @@ import { BounceLoader } from 'react-spinners';
 import Button from '../components/button';
 import NewCyclist from '../assets/new_cyclist.svg';
 
-class HomePage extends Component {
+class NewPage extends Component {
 
     state = {
         ready: false
@@ -38,7 +38,7 @@ class HomePage extends Component {
                 but I don’t know where to start!”
               </span>
 
-              <Button label="Next" style={{marginTop: 110}} />
+              <Button label="Next" to="/profile" style={{marginTop: 110}} />
             </ScrollView>
         );
     };
@@ -64,4 +64,4 @@ const styles = {
     }
 };
 
-export default HomePage;
+export default NewPage;

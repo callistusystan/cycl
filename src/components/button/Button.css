@@ -1,6 +1,7 @@
 .button {
     border-radius: 60px;
     border: none;
+    color: var(--dark);
     font: var(--copy16);
     width: 200px;
     display: flex;
