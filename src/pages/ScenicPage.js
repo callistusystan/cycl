@@ -46,9 +46,10 @@ class ScenicPage extends Component {
     renderContent = () => {
       if (this.state.isStart) {
         return (
-          <Link to="/scenic_done" style={{cursor: 'auto', textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', flex: 1, width: '100%'}}>
-            <span style={{color: 'var(--dark)', font: 'var(--title)'}}>
-              Turn left in 200m.
+          <Link to="/scenic_done" style={{cursor: 'auto', textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', flex: 1, width: '100%'}}>
+            <img src="turn_left.svg" style={{width: 28, height: 28,}} />
+            <span style={{color: 'var(--dark)', font: 'var(--title)', marginLeft: 16}}>
+              Turn left in 200m
             </span>
           </Link>
         );
@@ -157,7 +158,7 @@ class ScenicPage extends Component {
     renderPopup = () => {
       let height = 333;
       if (this.state.isReview) height = 575;
-      if (this.state.isStart) height = 92;
+      if (this.state.isStart) height = 100;
       return (
         <div style={{
           borderRadius: '10px 10px 40px 40px',
