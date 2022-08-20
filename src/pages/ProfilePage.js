@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ScrollView from '../components/react-mobile-hackathon/devices/ScrollView';
 import LoadingView from '../components/react-mobile-hackathon/devices/LoadingView';
 import { BounceLoader } from 'react-spinners';
-import DeviceBar from '../components/react-mobile-hackathon/devices/DeviceBar';
+import BottomBar from '../components/bottom-bar/BottomBar';
+import RouteCard from '../components/route-card/RouteCard';
 
 class ProfilePage extends Component {
 
@@ -46,24 +47,35 @@ class ProfilePage extends Component {
 
     renderBody = () => {
         return (
-          <div style={{flex: 1, display: 'flex', flexDirection: 'column' }}>
-            <ScrollView style={{height: '200%', padding: '32px 24px 0 24px', marginBottom: 72, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center'}}>
+          <div style={{flex: 1, maxHeight: '100%', display: 'flex', flexDirection: 'column' }}>
+            <ScrollView style={{padding: '32px 24px 16px 24px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center'}}>
               {this.renderProfile()}
               {this.renderPlanARoute()}
               <span style={{marginTop: 30, color: 'var(--dark)', font: 'var(--title)', alignSelf: 'flex-start'}}>Around you</span>
+              <img src="/route1.png" style={{marginTop: 12, width: '100%',}} />
+
               <span style={{marginTop: 32, color: 'var(--dark)', font: 'var(--title)', alignSelf: 'flex-start'}}>Find suggested routes</span>
+              <RouteCard
+                  to="/scenic"
+                  onClick={() => {}}
+                  title="A scenic journey to Opera House"
+                  description="Cycle through a traffic-free route and enjoy great views and a cuppa at the end!"
+                  estimatedTime="45 minutes"
+                  style={{marginTop: 12}} />
+              <RouteCard
+                  onClick={() => {}}
+                  title="Navigating through Sydney"
+                  description="Learn the ropes in cycling alongside traffic in this easy bike route with several stops."
+                  estimatedTime="30 minutes"
+                  style={{marginTop: 12}} />
+              <RouteCard
+                  onClick={() => {}}
+                  title="Navigating through Sydney"
+                  description="Learn the ropes in cycling alongside traffic in this easy bike route with several stops."
+                  estimatedTime="30 minutes"
+                  style={{marginTop: 12}} />
             </ScrollView>
-            <DeviceBar
-                title='Bottom Bar'
-                position='bottom'
-                titleStyle={{
-                    color: 'rgb(250, 250, 255)'
-                }}
-                style={{
-                    justifySelf: 'flex-end',
-                    boxShadow: '0px 0px 4px rgba(151, 151, 151, 0.4)',
-                }}>
-            </DeviceBar>
+            <BottomBar />
           </div>
         );
     };

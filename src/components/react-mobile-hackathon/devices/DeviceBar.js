@@ -4,6 +4,7 @@ class DeviceBar extends Component {
     render() {
         return (
             <div
+            id="bottomBar"
                 className={`device-bar ${this.props.position}`}
                 style={{
                     width: '100%',
@@ -18,8 +19,7 @@ class DeviceBar extends Component {
                     ...this.props.style
                 }}
             >
-                {this.props.logoComponent}
-                <h2 style={{ margin: 'auto', ...this.props.titleStyle }}>{this.props.title}</h2>
+                {this.props.children}
             </div>
         );
     }
