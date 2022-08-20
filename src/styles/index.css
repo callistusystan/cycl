@@ -1,10 +1,24 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+@import url('https://fonts.googleapis.com/css2?family=Outfit&family=Overpass&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
+    --feature: normal normal 400 32px/32px 'Outfit';
+    --title: normal normal 400 24px/24px 'Outfit';
+    --mini-title: normal normal 600 18px/20px 'Outfit';
+    --copy16: normal normal 400 16px/18px 'Overpass';
+    --copy14: normal normal 400 14px/16px 'Overpass';
+    --copy12: normal normal 400 12px/14px 'Overpass';
+    --snow: #fff;
+    --cream: #F2F2E7;
+    --sunshine: #FFFC9C;
+    --skies: #A5D8D6;
+    --lime: #CBD31C;
+    --olive: #3C5936;
+    --slate: #979797;
+    --dark: #1E1E1E;
 }
 
 @media only screen and (min-width: 600px) {
