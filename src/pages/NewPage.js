@@ -4,6 +4,7 @@ import LoadingView from "../components/react-mobile-hackathon/devices/LoadingVie
 import { BounceLoader } from "react-spinners";
 import Button from "../components/button";
 import NewCyclist from "../assets/new_cyclist.svg";
+import SeasonedCyclist from "../assets/seasoned_cyclist.svg";
 import RangeSlider from "../components/range-slider";
 
 class NewPage extends Component {
@@ -61,9 +62,43 @@ class NewPage extends Component {
             color: "var(--cream)",
           }}
         >
-          New to cycling
+          {this.state.difficulty === 0 && "New to cycling"}
+          {this.state.difficulty === 1 && "Casual cyclist"}
+          {this.state.difficulty === 2 && "Hobbyist cyclist"}
+          {this.state.difficulty === 3 && "Seasoned cyclist"}
         </span>
-        <img src={NewCyclist} style={{ marginTop: 30, width: 185 }} />
+        <div
+          style={{
+            height: "200px",
+            width: 185,
+            position: "relative",
+          }}
+        >
+          <img
+            src={NewCyclist}
+            style={{
+              marginTop: 30,
+              width: 185,
+              opacity: this.state.difficulty < 2 ? "1" : "0",
+              position: "absolute",
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }}
+          />
+          <img
+            src={SeasonedCyclist}
+            style={{
+              marginTop: 30,
+              width: 185,
+              position: "absolute",
+              opacity: this.state.difficulty > 1 ? "1" : "0",
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }}
+          />
+        </div>
         <span
           style={{
             marginTop: 32,
@@ -71,22 +106,46 @@ class NewPage extends Component {
             color: "var(--cream)",
           }}
         >
-          “Cycling sounds fun, <br />
-          but I don’t know where to start!”
+          {this.state.difficulty === 0 && (
+            <React.Fragment>
+              “Cycling sounds fun, <br />
+              but I don’t know where to start!”
+            </React.Fragment>
+          )}
+          {this.state.difficulty === 1 && (
+            <React.Fragment>
+              "Cycled a few times, <br />
+              still learning the ropes!”
+            </React.Fragment>
+          )}
+          {this.state.difficulty === 2 && (
+            <React.Fragment>
+              “Cycling is a great hobby, <br />
+              keeps me fit!”
+            </React.Fragment>
+          )}
+          {this.state.difficulty === 3 && (
+            <React.Fragment>
+              “I’ve been cycling for ages, <br />
+              and am always looking for new adventures”
+            </React.Fragment>
+          )}
         </span>
         <div
           style={{ display: "flex", alignContent: "center", marginTop: "42px" }}
         >
           <RangeSlider
             value={this.state.difficulty}
-            onChange={(e) => this.setState({ difficulty: e.target.value })}
+            onChange={(e) =>
+              this.setState({ difficulty: parseInt(e.target.value) })
+            }
           />
         </div>
-        <Button label="Next" to="/profile"  style={{ marginTop: 110 }} />
+        <Button label="Next" to="/profile" style={{ marginTop: 110 }} />
       </ScrollView>
     );
   };
-  
+
   render() {
     return (
       <div style={styles.container}>
