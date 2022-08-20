@@ -4,6 +4,8 @@ import LoadingView from "../components/react-mobile-hackathon/devices/LoadingVie
 import { BounceLoader } from "react-spinners";
 import Button from "../components/button";
 import NewCyclist from "../assets/new_cyclist.svg";
+import CasualRider from "../assets/casual_rider.svg";
+import LevellingUp from "../assets/levelling_up.svg";
 import SeasonedCyclist from "../assets/seasoned_cyclist.svg";
 import RangeSlider from "../components/range-slider";
 
@@ -63,8 +65,8 @@ class NewPage extends Component {
           }}
         >
           {this.state.difficulty === 0 && "New to cycling"}
-          {this.state.difficulty === 1 && "Casual cyclist"}
-          {this.state.difficulty === 2 && "Hobbyist cyclist"}
+          {this.state.difficulty === 1 && "Casual rider"}
+          {this.state.difficulty === 2 && "Levelling up"}
           {this.state.difficulty === 3 && "Seasoned cyclist"}
         </span>
         <div
@@ -79,8 +81,32 @@ class NewPage extends Component {
             style={{
               marginTop: 30,
               width: 185,
-              opacity: this.state.difficulty < 2 ? "1" : "0",
+              opacity: this.state.difficulty === 0 ? "1" : "0",
               position: "absolute",
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }}
+          />
+          <img
+            src={CasualRider}
+            style={{
+              marginTop: 30,
+              width: 185,
+              position: "absolute",
+              opacity: this.state.difficulty === 1 ? "1" : "0",
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }}
+          />
+          <img
+            src={LevellingUp}
+            style={{
+              marginTop: 30,
+              width: 185,
+              position: "absolute",
+              opacity: this.state.difficulty === 2 ? "1" : "0",
               left: 0,
               right: 0,
               bottom: 0,
@@ -92,7 +118,7 @@ class NewPage extends Component {
               marginTop: 30,
               width: 185,
               position: "absolute",
-              opacity: this.state.difficulty > 1 ? "1" : "0",
+              opacity: this.state.difficulty === 3 ? "1" : "0",
               left: 0,
               right: 0,
               bottom: 0,
@@ -114,14 +140,14 @@ class NewPage extends Component {
           )}
           {this.state.difficulty === 1 && (
             <React.Fragment>
-              "Cycled a few times, <br />
-              still learning the ropes!”
+              "I only cycle for fun, <br />
+              I’d love to make friends along the way.”
             </React.Fragment>
           )}
           {this.state.difficulty === 2 && (
             <React.Fragment>
-              “Cycling is a great hobby, <br />
-              keeps me fit!”
+              “I want to get more serious about cycling, <br />
+              but I need help in getting there.”
             </React.Fragment>
           )}
           {this.state.difficulty === 3 && (
@@ -141,7 +167,11 @@ class NewPage extends Component {
             }
           />
         </div>
-        <Button label="Next" to="/profile" style={{ marginTop: 110 }} />
+        <Button
+          label="Next"
+          to={this.state.difficulty === 3 ? "/search" : "/profile"}
+          style={{ marginTop: 110 }}
+        />
       </ScrollView>
     );
   };
