@@ -9,6 +9,7 @@ class SearchResultPage extends Component {
   state = {
     ready: false,
     isStart: false,
+    goodRoute: false,
   };
 
   componentDidMount() {
@@ -76,7 +77,7 @@ class SearchResultPage extends Component {
             Estimated arrival time:
           </span>
           <span style={{ color: "var(--dark)", font: "var(--title)" }}>
-            4:52pm
+            {this.state.goodRoute ? '4:50pm' : '4:52pm'}
           </span>
         </div>
 
@@ -183,7 +184,7 @@ class SearchResultPage extends Component {
               font: "var(--copy14)",
             }}
           >
-            via Harbour Bridge and Argyle Street
+            {this.state.goodRoute ? 'via Pitt St' : 'via Kenn St'}
           </span>
         </div>
 
@@ -241,12 +242,27 @@ class SearchResultPage extends Component {
           maxHeight: "100%",
           display: "flex",
           flexDirection: "column",
+          cursor: 'pointer',
         }}
       >
         <img
-          src="/route1.png"
-          style={{ width: "350%", marginLeft: -350, marginTop: -80 }}
+          onClick={() => this.setState({goodRoute: true,})}
+          src={this.state.goodRoute ? 'pro_route2.png' : 'pro_route1.png'}
+          style={{ width: "100%", marginLeft: 0, marginTop: -50 }}
         />
+        <div style={{display: 'flex', alignItems: 'center', position: 'absolute', top: 265, left: 132}}>
+          <BounceLoader size="30" color="red" style={{position: 'absolute',}} />
+          <div style={{marginLeft: -100, marginTop: -19, background: '#fff', padding: '0 8px 2px', borderRadius: 10, boxShadow: '0px 0px 4px rgba(151, 151, 151, 0.4)',}}>
+            <span style={{font: 'var(--copy12)', color: 'var(--dark)'}}>Road works</span>
+          </div>
+        </div>
+
+        <div style={{display: 'flex', alignItems: 'center', position: 'absolute', top: 339, left: 142}}>
+          <BounceLoader size="30" color="red" style={{position: 'absolute',}} />
+          <div style={{marginLeft: -108, marginTop: -19, background: '#fff', padding: '0 8px 2px', borderRadius: 10, boxShadow: '0px 0px 4px rgba(151, 151, 151, 0.4)',}}>
+            <span style={{font: 'var(--copy12)', color: 'var(--dark)'}}>Heavy Traffic</span>
+          </div>
+        </div>
         {this.renderPopup()}
       </div>
     );
@@ -279,7 +295,7 @@ class SearchResultPage extends Component {
             />
           </Link>
           <div style={{ flexGrow: "1" }}>
-            <p>North Sydney</p>
+            <p>Pyrmont</p>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <span style={{ lineHeight: "5px", color: "var(--slate)" }}>
                 .

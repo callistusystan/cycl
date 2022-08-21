@@ -67,12 +67,12 @@ class GroupCyclePage extends Component {
 
             <span style={{alignSelf: 'flex-start', marginTop: 32, color: 'var(--dark)', font: 'var(--title)'}}>Upcoming rides</span>
 
-            <CafeCard cafeName="Cafe" suburb="Suburb" style={{background: 'var(--sunshine)'}} />
+            <CafeCard cafeName="GG Espresso" suburb="Sydney" style={{background: 'var(--sunshine)'}} />
 
             <span style={{alignSelf: 'flex-start', marginTop: 32, color: 'var(--dark)', font: 'var(--title)'}}>Past rides</span>
 
-            <CafeCard cafeName="Cafe" suburb="Suburb" />
-            <CafeCard cafeName="Cafe" suburb="Suburb" />
+            <CafeCard cafeName="Ground Control Cafe" suburb="Sydney" />
+            <CafeCard cafeName="Guylian Belgian Chocolate Cafe" suburb="Sydney" />
           </ScrollView>
         </div>
       );

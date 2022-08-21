@@ -11,7 +11,7 @@ class CompletedRidePage extends Component {
   };
 
   componentDidMount() {
-    setTimeout(() => this.setState({ ready: true }), 500);
+    setTimeout(() => this.setState({ ready: true }), 1500);
   }
 
   renderLoading = () => {
@@ -73,7 +73,7 @@ class CompletedRidePage extends Component {
           justifyContent: "space-between",
         }}
       >
-        <img src="/route1.png" style={{ width: "250%", marginLeft: -260 }} />
+        <img src="/pro_route2.png" style={{ width: "100%", marginLeft: 0, marginTop: -50 }} />
         <ScrollView
           style={{
             background: "#fff",
@@ -115,7 +115,7 @@ class CompletedRidePage extends Component {
               You're here!
             </h1>
             <p style={{ marginTop: "4px", font: "var(--copy16)" }}>
-              Total time elapsed: 50 minutes
+              Total time elapsed: 13 minutes
             </p>
             <p
               style={{
@@ -124,7 +124,7 @@ class CompletedRidePage extends Component {
                 color: "var(--lime)",
               }}
             >
-              You were ahead of schedule by 2 minutes.
+              You were ahead of schedule by 1 minute.
             </p>
           </div>
           {this.renderFeedback()}

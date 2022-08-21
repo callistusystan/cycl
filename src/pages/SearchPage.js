@@ -78,6 +78,7 @@ class SearchPage extends Component {
               borderRadius: "60px",
               background: "#E3E3E3",
               padding: "2px 12px",
+              paddingTop: 4,
               font: "var(--copy12)",
               color: "#8C8C8C",
               border: "0",
@@ -91,6 +92,7 @@ class SearchPage extends Component {
               borderRadius: "60px",
               background: "#E3E3E3",
               padding: "2px 12px",
+              paddingTop: 4,
               font: "var(--copy12)",
               color: "#8C8C8C",
               border: "0",
@@ -104,6 +106,7 @@ class SearchPage extends Component {
               borderRadius: "60px",
               background: "var(--lime)",
               padding: "2px 12px",
+              paddingTop: 4,
               font: "var(--copy12)",
               border: "0",
             }}
@@ -115,6 +118,7 @@ class SearchPage extends Component {
               borderRadius: "60px",
               background: "var(--lime)",
               padding: "2px 12px",
+              paddingTop: 4,
               font: "var(--copy12)",
               border: "0",
             }}
@@ -169,6 +173,7 @@ class SearchPage extends Component {
               borderRadius: "47px",
               background: "var(--cream)",
               padding: "4px 12px",
+              paddingTop: 6,
               font: "var(--copy12)",
               color: "var(--slate)",
               border: "0",
@@ -238,20 +243,20 @@ class SearchPage extends Component {
               "Opera house",
               "45 mins",
               "2.4km",
-              "Coffee Cafe"
+              "GG Espresso"
             )}
             {this.renderRecentSearchItem("Darling Sq", "20 mins", "1.5km")}
             {this.renderRecentSearchItem(
               "225 George Street, Sydney",
               "30 mins",
               "2.0km",
-              "Coffee Cafe"
+              "Precint"
             )}
             {this.renderRecentSearchItem(
               "Barangaroo Ferry Terminal",
               "25 mins",
               "1.8km",
-              "Coffee Cafe"
+              "Three Beans"
             )}
             {this.renderRecentSearchItem(
               "48 Pirrama Rd, Pyrmont",
