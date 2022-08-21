@@ -184,7 +184,9 @@ class ScenicPage extends Component {
     renderBody = () => {
         return (
           <div style={{flex: 1, maxHeight: '100%', display: 'flex', flexDirection: 'column' }}>
-            <img src="/route1.png" style={{width: '350%',marginLeft: -350, marginTop: -80}} />
+            <Link to="/">
+              <img src="/route1.png" style={{width: '350%',marginLeft: -350, marginTop: -80}} />
+            </Link>
             {this.renderPopup()}
           </div>
         );

@@ -169,7 +169,7 @@ class SearchResultPage extends Component {
               textAlign: "left",
             }}
           >
-            45 minutes •  2.4km
+            {this.state.goodRoute ? '14 minutes •  3.2km' : '16 minutes •  3.3km'}
           </span>
           <span
             style={{ marginTop: 4, color: "var(--dark)", font: "var(--title)" }}
